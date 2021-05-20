@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 80%;">
+        <div class="row">
+            <h5>To Watch</h5>
+            {% for watch in watchlist %}
+                <div class="card col-md-4" style="width:16rem">
+                    <a href="{{ path('show_movie', {'id': watch.movie.id }) }}">
+                        <div class="card-body">
+                            {# ON change tout on recupere le tableau watched comme ça beaucoup plus simple #}
+                            <h5 class="card-title">{{ watch.movie.name }}</h5>
+                            {% if watch.movie.image starts with 'http' %}
+                                <img style="max-width: 100%" src="{{ watch.movie.image }}" alt="{{ watch.movie.name }}">
+                            {% else %}
+                                <img style="max-width: 100%"  src="/assets/upload/image/{{ watch.movie.image }}" alt="{{ watch.movie.name }}">
+                            {% endif %}
+                            <div class="card-text" style="max-height: 250px;
+                                                    height: 250px;
+                                                    white-space: nowrap;
+                                                    overflow: hidden;
+                                                    text-overflow: ellipsis;">
+                                {{ watch.movie.synopsis | raw }}
+                            </div>
+                            <div class="card-text">
+                                <a href="{{ path('add_seen', {'id': watch.id }) }}">
+                                    <button>Seen</button>
+                                </a>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <h5>Already Seen</h5>
+            {% for watch in watched %}
+                <div class="card col-md-4" style="width:16rem">
+                    <a href="{{ path('show_movie', {'id': watch.movie.id }) }}">
+                        <div class="card-body">
+                            {# ON change tout on recupere le tableau watched comme ça beaucoup plus simple #}
+                            <h5 class="card-title">{{ watch.movie.name }}</h5>
+                            {% if watch.movie.image starts with 'http' %}
+                                <img style="max-width: 100%" src="{{ watch.movie.image }}" alt="{{ watch.movie.name }}">
+                            {% else %}
+                                <img style="max-width: 100%"  src="/assets/upload/image/{{ watch.movie.image }}" alt="{{ watch.movie.name }}">
+                            {% endif %}
+                            <div class="card-text" style="max-height: 250px;
+                                                    height: 250px;
+                                                    white-space: nowrap;
+                                                    overflow: hidden;
+                                                    text-overflow: ellipsis;">
+                                {{ watch.movie.synopsis | raw }}
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

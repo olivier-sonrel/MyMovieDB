@@ -13,11 +13,9 @@
         <div class="row">
             {% for movie in movies %}
                 <div class="card col-md-4" style="width:16rem">
-
+                    <a href="{{ path('show_movie', {'id': movie.id }) }}">
                         <div class="card-body">
-                            <a href="{{ path('show_movie', {'id': movie.id }) }}">
-                                <h5 class="card-title">{{ movie.name }}</h5>
-                            </a>
+                            <h5 class="card-title">{{ movie.name }}</h5>
                             {% if movie.image starts with 'http' %}
                                 <img style="max-width: 100%" src="{{ movie.image }}" alt="{{ movie.name }}">
                             {% else %}
@@ -30,18 +28,8 @@
                                                     text-overflow: ellipsis;">
                                 {{ movie.synopsis | raw }}
                             </div>
-                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                                <div class="card-text">
-                                    <a href="{{ path('add_watch', {'id': movie.id }) }}">
-                                        <button>Watch</button>
-                                    </a>
-                                </div>
-                            {% else %}
-
-                            {% endif %}
-
                         </div>
-
+                    </a>
                 </div>
             {% endfor %}
         </div>
