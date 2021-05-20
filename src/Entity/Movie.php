@@ -70,12 +70,15 @@ class Movie
      */
     private $synopsis;
 
+    private $inList;
+
     public function __construct()
     {
         $this->watchLists = new ArrayCollection();
         $this->actors = new ArrayCollection();
         $this->studios = new ArrayCollection();
         $this->genres = new ArrayCollection();
+        $this->inList = false;
     }
 
     public function __toString()
@@ -267,6 +270,18 @@ class Movie
     public function setSynopsis(?string $synopsis): self
     {
         $this->synopsis = $synopsis;
+
+        return $this;
+    }
+
+    public function getInList(): ?bool
+    {
+        return $this->inList;
+    }
+
+    public function setInList(bool $inList): self
+    {
+        $this->inList = $inList;
 
         return $this;
     }

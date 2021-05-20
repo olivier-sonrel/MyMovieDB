@@ -37,7 +37,12 @@
                                                     text-overflow: ellipsis;">
                                 {{ movie.synopsis | raw }}
                             </div>
-                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') and movie.inList == true %}
+                                <div class="card-text">
+                                    <h5>Already in watch list</h5>
+                                </div>
+                            {% endif %}
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') and movie.inList == false %}
                                 <div class="card-text">
                                     <a href="{{ path('add_watch', {'id': movie.id }) }}">
                                         <button>Watch</button>
