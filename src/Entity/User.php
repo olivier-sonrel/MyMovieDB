@@ -59,6 +59,11 @@ class User implements UserInterface
         $this->movies = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->username;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

@@ -44,6 +44,11 @@ class Actor
         $this->movies = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->firstName.' '.$this->lastName;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
