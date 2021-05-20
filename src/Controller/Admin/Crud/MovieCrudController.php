@@ -6,6 +6,7 @@ use App\Entity\Movie;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
@@ -26,9 +27,9 @@ class MovieCrudController extends AbstractCrudController
             AssociationField::new('actors'),
             AssociationField::new('genres'),
             AssociationField::new('studios'),
-
             DateField::new('releaseDate'),
-            //'image'
+            ImageField::new('image')->setUploadDir("/public/assets/upload/image")
+                ->setBasePath("assets/upload/image"),
 
         ];
     }
