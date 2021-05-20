@@ -38,6 +38,7 @@ class DashboardController extends AbstractDashboardController
     {
         return[
         MenuItem::linktoDashboard('Dashboard', 'fa fa-home'),
+        MenuItem::linkToRoute('MyMovie', 'fa fa-')
 
         MenuItem::section('Movie'),
             MenuItem::linkToCrud('Movies', 'fa fa-tags', Movie::class),
