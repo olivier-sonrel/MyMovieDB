@@ -13,7 +13,7 @@
         <div class="row">
             {% for studio in studios %}
                 <div class="card col-md-4" style="width:16rem">
-                    <a href="{{ path('show_studio', {'id': studio.id }) }}">
+                    <a href="{{ path('show_by_studio', {'id': studio.id }) }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ studio.name }}</h5>
                         </div>

@@ -13,7 +13,7 @@
         <div class="row">
             {% for genre in genres %}
                 <div class="card col-md-4" style="width:16rem">
-                    <a href="{{ path('show_genre', {'id': genre.id }) }}">
+                    <a href="{{ path('show_by_genre', {'id': genre.id }) }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ genre.name }}</h5>
                         </div>

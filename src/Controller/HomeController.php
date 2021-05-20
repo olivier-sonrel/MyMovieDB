@@ -63,8 +63,8 @@ class HomeController extends AbstractController
     public function genres(): Response
     {
 
-        return $this->render('home/genres.html.twig', [
-            'movies' => $this->genreRepo->findAll(),
+        return $this->render('home/genre.html.twig', [
+            'genres' => $this->genreRepo->findAll(),
         ]);
     }
 
@@ -75,7 +75,7 @@ class HomeController extends AbstractController
     {
 
         return $this->render('home/actors.html.twig', [
-            'movies' => $this->actorRepo->findAll(),
+            'actors' => $this->actorRepo->findAll(),
         ]);
     }
 
@@ -85,8 +85,8 @@ class HomeController extends AbstractController
     public function studios(): Response
     {
 
-        return $this->render('home/studio.html.twig', [
-            'movies' => $this->studioRepo->findAll(),
+        return $this->render('home/genre.html.twig', [
+            'studios' => $this->studioRepo->findAll(),
         ]);
     }
 
@@ -95,7 +95,6 @@ class HomeController extends AbstractController
      */
     public function about(): Response
     {
-
         return $this->render('home/about.html.twig');
     }
 }

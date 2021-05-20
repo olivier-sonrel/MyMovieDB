@@ -12,6 +12,9 @@
     <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 80%;">
         <div class="row">
             <h5>To Watch</h5>
+            {% if watchlist is empty%}
+                <h5>Mais c'est vide!!!!</h5>
+            {% endif %}
             {% for watch in watchlist %}
                 <div class="card col-md-4" style="width:16rem">
                     <a href="{{ path('show_movie', {'id': watch.movie.id }) }}">

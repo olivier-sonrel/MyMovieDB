@@ -6,12 +6,18 @@ use App\Entity\Actor;
 use App\Entity\Genre;
 use App\Entity\Movie;
 use App\Entity\Studio;
+use App\Repository\ActorRepository;
+use App\Repository\GenreRepository;
+use App\Repository\MovieRepository;
+use App\Repository\StudioRepository;
+use App\Repository\WatchListRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ChoiceController extends AbstractController
 {
+
     /**
      * @Route("/movie/{id}", name="show_movie")
      */
@@ -33,24 +39,40 @@ class ChoiceController extends AbstractController
     }
 
     /**
-     * TEMPLATE LIST
-     * @Route("/genre/{id}", name="show_genre")
+     * @Route("/by/actor/{id}", name="show_by_actor")
      */
-    public function showGenre(Genre $genre): Response
+    public function showByActor(Actor $actor): Response
     {
-        return $this->render('choice/list.html.twig', [
-            'list' => $genre,
+        $movies = $actor->getMovies();
+
+        return $this->render('home/index.html.twig', [
+            'movies' => $movies,
         ]);
     }
 
     /**
-     * TEMPLATE LIST
-     * @Route("/studio/{id}", name="show_studio")
+     *
+     * @Route("/by/genre/{id}", name="show_by_genre")
      */
-    public function showStudio(Studio $studio): Response
+    public function showByGenre(Genre $genre): Response
     {
-        return $this->render('choice/list.html.twig', [
-            'list' => $studio,
+        $movies = $genre->getMovies();
+
+        return $this->render('home/index.html.twig', [
+            'movies' => $movies,
+        ]);
+    }
+
+    /**
+     *
+     * @Route("/by/studio/{id}", name="show_by_studio")
+     */
+    public function showByStudio(Studio $studio): Response
+    {
+        $movies = $studio->getMovies();
+
+        return $this->render('home/index.html.twig', [
+            'movies' => $movies,
         ]);
     }
 }

@@ -23,6 +23,9 @@
                             {% endif %}
                         </div>
                     </a>
+                    <a href="{{ path('show_by_actor', {'id': actor.id }) }}">
+                        <button>Movies</button>
+                    </a>
                 </div>
             {% endfor %}
         </div>
