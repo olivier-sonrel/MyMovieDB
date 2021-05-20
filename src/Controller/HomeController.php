@@ -85,7 +85,7 @@ class HomeController extends AbstractController
     public function studios(): Response
     {
 
-        return $this->render('home/genre.html.twig', [
+        return $this->render('home/studio.html.twig', [
             'studios' => $this->studioRepo->findAll(),
         ]);
     }

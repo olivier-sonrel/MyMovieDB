@@ -13,18 +13,15 @@
         <div class="row">
             {% for actor in actors %}
                 <div class="card col-md-4" style="width:16rem">
-                    <a href="{{ path('show_actor', {'id': actor.id }) }}">
+                    <a href="{{ path('show_by_actor', {'id': actor.id }) }}">
                         <div class="card-body">
-                            <h5 class="card-title">{{ actor.name }}</h5>
+                            <h5 class="card-title">{{ actor.firstName }}' '{{ actor.lastName }}</h5>
                             {% if actor.image starts with 'http' %}
                                 <img style="max-width: 100%" src="{{ actor.image }}" alt="{{ actor.firstName }}-{{ actor.lastName }}">
                             {% else %}
-                                <img style="max-width: 100%"  src="/assets/upload/image/{{ actor.image }}" alt="{{ actor.name }}">
+                                <img style="max-width: 100%"  src="/assets/upload/image/{{ actor.image }}" alt="{{ actor.firstName }}-{{ actor.lastName }}">
                             {% endif %}
                         </div>
-                    </a>
-                    <a href="{{ path('show_by_actor', {'id': actor.id }) }}">
-                        <button>Movies</button>
                     </a>
                 </div>
             {% endfor %}

@@ -29,24 +29,15 @@ class ChoiceController extends AbstractController
     }
 
     /**
-     * @Route("/actor/{id}", name="show_actor")
-     */
-    public function showActor(Actor $actor): Response
-    {
-        return $this->render('choice/actor.html.twig', [
-            'actor' => $actor,
-        ]);
-    }
-
-    /**
      * @Route("/by/actor/{id}", name="show_by_actor")
      */
     public function showByActor(Actor $actor): Response
     {
         $movies = $actor->getMovies();
 
-        return $this->render('home/index.html.twig', [
+        return $this->render('choice/actor.html.twig', [
             'movies' => $movies,
+            'actor' => $actor,
         ]);
     }
 
@@ -58,8 +49,9 @@ class ChoiceController extends AbstractController
     {
         $movies = $genre->getMovies();
 
-        return $this->render('home/index.html.twig', [
+        return $this->render('choice/genre.html.twig', [
             'movies' => $movies,
+            'genre' => $genre,
         ]);
     }
 
@@ -71,8 +63,9 @@ class ChoiceController extends AbstractController
     {
         $movies = $studio->getMovies();
 
-        return $this->render('home/index.html.twig', [
+        return $this->render('choice/studio.html.twig', [
             'movies' => $movies,
+            'studio' => $studio,
         ]);
     }
 }
